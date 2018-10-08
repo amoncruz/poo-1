@@ -47,11 +47,33 @@ public class ListaDE<T> {
 		novo.prox=aux.prox;
 		aux.prox.ant=novo;
 		aux.prox=novo;
-		
 		novo.ant=aux;
 		
 	}
 size++;
+	}Object remover_posicao(int p){
+		No<T> removido=null;
+		if(primeiro==null){
+			System.out.println("lista vazia");
+		}else{
+			if(p>size){
+				System.out.println("posicao não existe");
+			
+			}else{
+			int i=0
+					;
+			No<T> aux=primeiro;
+			while(i<p && aux!=null){
+				aux=aux.prox;
+				i++;
+			}
+			aux.prox.ant=aux.ant;
+			aux.ant.prox=aux.prox;
+			removido=aux;
+			aux=null;
+			size--;
+		}
+		}		return removido;
 	}
 		Object removerInicio(){
 		No<T> removido=null;	
@@ -106,10 +128,7 @@ void mostrarfrentePRATRAS(){
 		lista.addInicio("leo");
 		lista.addInicio("joao");
 		lista.addInicio("zezinho");
-		lista.removerInicio();
-		lista.removerFinal();
-		lista.add_posicao("gina", 1);
-		lista.add_posicao("juliana", 1);
+		lista.remover_posicao(2);
 	
 		lista.mostrarTrasprafrente();
 		System.out.println("----------------");
